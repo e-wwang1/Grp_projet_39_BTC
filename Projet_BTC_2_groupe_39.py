@@ -6,9 +6,33 @@ Created on Sun Nov 30 14:28:40 2025
 
 
 """
-from matplotlib import pyplot as plt
-import math
+filepath = input("afficher les dossiers :")
+filepath = [filepath,'csv']
+filepath = '.'.join(filepath)
+print (filepath)
 
+
+def displayFile (filepath) : 
+    # open in read-only mode 
+    fd = open(filepath, 'r')
+    
+    #retrieve the next line 
+    line = fd.readline()
+    
+    while line != '': 
+        # retrieve one line
+        line = fd.readline()
+        #remove the new_line character 
+        line = line.replace('\n', '')
+        
+        print (line)
+    fd.close()
+        
+displayFile (filepath)
+    
+''' from matplotlib import pyplot as plt
+ import math   
+    
 figure, axes = plt.subplots()
 
 
@@ -55,3 +79,4 @@ figure.savefig("out.png", dpi=150)
 
 print(figure)
 print(axes)
+'''
