@@ -1,5 +1,5 @@
 ""
-# Descriion générale du projet 
+# Descripion générale du projet 
 
 Tout d'abord, ce projet à pour objectif de traiter des données expérimentales issues d'une étude sur des souris traitées ou non par un cocktail d'antibiotiques. 
 Ensuite, le programme permet de lire un fichier CSV, d'extraire les informations pertinentes (de les analyser dans la partie biologie du projet) ainsi que générer des graphiques pour ainsi visualiser l'évolution de la quantité de bactéries vivantes dans le microbiote intestinale. 
