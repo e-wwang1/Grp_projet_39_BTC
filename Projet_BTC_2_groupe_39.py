@@ -79,7 +79,14 @@ for mouse_id in mouse_list :
 # draw curve    
     axes.plot(x,y,label = mouse_id,color = clr,alpha=0.5)
 #Graph formatting 
+axes.set_xlabel("Experimental day"
+axes.set_ysetlabel("Log10 live bacteria")
+axes.set_title("Fecal bacteria evolution")
+figure.legend(loc="right")  
 figure.savefig("out.png", dpi=200)
-figure.legend(loc='right')        
+Figure.show()
+print("Graph saved as out.png")
+      
     
+
 
