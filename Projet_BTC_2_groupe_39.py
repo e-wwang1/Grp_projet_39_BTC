@@ -34,6 +34,8 @@ filepath = '.'.join(filepath)
 csv_name = os.path.basename(filepath)
 dest_csv = os.path.join("input", csv_name)
 shutil.copy(filepath, dest_csv)
+
+
 filepath = dest_csv
 
 # -----------------------------
@@ -68,9 +70,8 @@ fd.close()
 
 
 figure, axis = plt.subplots()
-
 # for 'output' folder
-fecal_rows = []  
+fecal_rows = []
 for mouse_id in mouse_list : 
 
     x=[]
@@ -108,6 +109,7 @@ for mouse_id in mouse_list :
 # Plot curve    
 
     axis.plot(x,y,color = clr)
+
       
  #Figure title, labels, and legend
 legend_element =[
@@ -120,6 +122,7 @@ axis.set_ylabel("log10(live bacteria/wet g")
 plt.legend(handles=legend_element, loc='lower left')
 
 figure.savefig("images/fecal_plot.png", dpi=200)
+
 
 # safeguard CSV FECAL
 with open("output/fecal_data.csv", "w", newline="") as f:
@@ -253,8 +256,5 @@ with open("output/ileal_data.csv", "w", newline="") as f:
         writer.writerow(["ileal", "ABX", v])
     for v in ileal_plb:
         writer.writerow(["ileal", "Placebo", v])
-
-
-
 
 
