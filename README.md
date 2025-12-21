@@ -92,7 +92,7 @@ b) Fonctionnalitées non implentées
 • Le programme ne propose pas d'analyses statistiques complémentaires( par exemple des comparaisons entre groupes, moyennes, tests statistiques, écart-type etc.).
 
 
-6. Conclusion  
+7. Conclusion  
 
 
 
