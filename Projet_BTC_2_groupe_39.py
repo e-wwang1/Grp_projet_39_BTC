@@ -17,15 +17,15 @@ from matplotlib.patches import Patch
 
 
 
-# -----------------------------
-# Créer les dossiers nécessaires
-# -----------------------------
+# Create folders input ; output ; images 
+
 os.makedirs("input", exist_ok=True)
 os.makedirs("output", exist_ok=True)
 os.makedirs("images", exist_ok=True)
 
 
 #Read input file name and build CSV path
+
 filepath = input("Enter the CSV name file (without extention) :")
 filepath = [filepath,'csv']
 filepath = '.'.join(filepath)
@@ -38,9 +38,10 @@ shutil.copy(filepath, dest_csv)
 # Utiliser le CSV copié pour la suite du script
 filepath = dest_csv
 
-
+# -----------------------------
 ##Create a list of unique mouse IDs
-   
+
+  
 mouse_list = []
 
 fd = open(filepath, "r")
@@ -63,7 +64,10 @@ while line != "":
 
 fd.close()
 
+# -----------------------------
 #Plot fecal samples for each mouse
+
+
 
 figure, axis = plt.subplots()
 
@@ -101,10 +105,11 @@ for mouse_id in mouse_list :
     clr = 'blue'
     if treatment == 'ABX':
         clr = 'red'
-
+        
 # Plot curve    
+
     axis.plot(x,y,color = clr)
-figure.savefig("images/cecal_plot.png", dpi=200)
+figure.savefig("images/fecal_plot.png", dpi=200)
       
  #Figure title, labels, and legend
 legend_element =[
@@ -124,8 +129,10 @@ with open("output/fecal_data.csv", "w", newline="") as f:
 
 
 
-
+# -----------------------------
 ####### CECAL samples:
+
+
 
 figure, axis = plt.subplots()
         
@@ -184,7 +191,7 @@ with open("output/cecal_data.csv", "w", newline="") as f:
     for v in cecal_plb:
         writer.writerow(["cecal", "Placebo", v])
         
-        
+# -----------------------------   
 #######  ILEAL samples
 
 figure, axis = plt.subplots()
