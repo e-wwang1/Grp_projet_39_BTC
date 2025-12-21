@@ -3,7 +3,7 @@
    
 
 Tout d'abord, ce projet a pour objectif de traiter des données expérimentales issues d'une étude sur des souris traitées ou non par un cocktail d'antibiotiques. 
-Ensuite, le programme permet de lire un fichier CSV, d'extraire les informations pertinentes (de les analyser dans la partie biologie du projet) ainsi que générer des graphiques pour ainsi visualiser l'évolution de la quantité de bactéries vivantes dans le microbiote intestinale. 
+Ensuite, le programme permet de lire un fichier CSV, d'extraire les informations pertinentes (de les analyser dans la partie biologie du projet) ainsi que générer des graphiques pour ainsi visualiser l'évolution de la quantité de bactéries vivantes dans le microbiote intestinal. 
 
 
 2. Contenu du dépôt
@@ -33,9 +33,9 @@ README.md : fichier contenenant les instructions d'utilisations et les limitatio
 
 •détection automatique de toutes les souris présentes 
 
-•Filtrage des données fécale
+•Filtrage des données fécales
 
-•Mise en place d'un graphique en lignes représentant l'évolution des bactéries vivantes pour chaque souris
+•Mise en place d'un graphique en ligne représentant l'évolution des bactéries vivantes pour chaque souris
 
 •Différenctiation visuelle des groupes antibiotiques et placebo par un code couleur. 
 
@@ -48,9 +48,11 @@ Cependant, ce code présente des limitations:
 
 • Le programme n'est pas fait pour des fichiers CSV volumineux, en effet, le fichier peut être relu plusieurs fois, ce qui peut ralentir l'exécution pour un grand nombre de données. 
 
-• La structure des fichiers est supposée être toujours identique et correcte à celle fournie (il n'y a aucune vérification automatique du format qui est effectuée)
+• La structure des fichiers est supposée être toujours identique et correcte à celle fournie (il n'y a aucune vérification automatique du format qui est effectuée).
 
-• Le programme ne permet pas de sélectionner un sous-groupe de souris (par exemple le sexe)
+• Le programme ne permet pas de sélectionner un sous-groupe de souris (par exemple le sexe).
+
+•
 
 
 6.Conclusion : 
