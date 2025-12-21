@@ -11,11 +11,12 @@ from matplotlib import pyplot as plt
 from matplotlib.patches import Patch
 import math 
 
+#Read input file name and build CSV path
 filepath = input("Enter the CSV name file (without extention) :")
 filepath = [filepath,'csv']
 filepath = '.'.join(filepath)
 
-##### creer mouse_list 
+##Create a list of unique mouse IDs
    
 mouse_list = []
 
@@ -39,7 +40,7 @@ while line != "":
 
 fd.close()
 
-##### 
+#Plot fecal samples for each mouse
 
 figure, axis = plt.subplots()
 
@@ -57,32 +58,30 @@ for mouse_id in mouse_list :
     while line != "":
         line = line.replace("\n", "")
         data = line.split(";")
+
+        # Select data for the current mouse and fecal samples only
         if data[4]==mouse_id :
             if data[2] == 'fecal':
                 x_value = float(data[7])
                 y_value = math.log10(float(data[8]))
                 x.append(x_value)
                 y.append(y_value)
-                #get color for treatment 
+                ## Retrieve treatment type
                 treatment= data[5]
-
-
 
         line = fd.readline()
     
     fd.close()
+    # Set curve color according to treatment
     clr = 'blue'
     if treatment == 'ABX':
         clr = 'red'
 
-
-
-
-# draw curve    
+# Plot curve    
     axis.plot(x,y,color = clr)
 figure.savefig("out.png", dpi=200)
       
- #titre et label 
+ #Figure title, labels, and legend
 legend_element =[
     Patch(facecolor='red',label="ABX", alpha=0.7),
     Patch(facecolor='blue',alpha=0.7, label="Placebo")]  
@@ -94,14 +93,12 @@ plt.legend(handles=legend_element, loc='lower left')
 
 
 
-####### Pour CECAL sample
-
+####### CECAL samples:
 
 figure, axis = plt.subplots()
         
 cecal_abx = []
 cecal_plb = []
-
 
 fd = open("data_small.csv", "r")
 # skip 1st line
@@ -109,11 +106,11 @@ line = fd.readline()
 # retrieve 1st data line (2nd line)
 line = fd.readline()
 while line != '':
-    # remove endof line character
+    # remove end-of-line character
     line = line.replace("\n", "")
     data = line.split(";")
 
-    # process only for SECAL samples
+    # process only for cecal samples
     if data[2] == 'cecal':
         value = math.log10(float(data[8]))
         if data[5] == 'ABX':
@@ -124,18 +121,16 @@ while line != '':
     
     line = fd.readline()
 fd.close()
-#draw violons 
+#draw violin plots
 violins = axis.violinplot([cecal_abx, cecal_plb], positions = [ 1,2 ], showmedians=False, showmeans =False)
 
-#  appliquer les couleurs
+#  apply colors to violins
 for violin, color in zip(violins['bodies'], ["red", "blue"]):
     violin.set_facecolor(color)
 
     violin.set_alpha(0.1)
 
-# affichage titre et label 
-
-
+# title, labels and legend 
 legend_element =[
     Patch(facecolor='red',label="ABX", alpha=0.1),
     Patch(facecolor='blue',alpha=0.1, label="Placebo")]    
@@ -146,7 +141,7 @@ plt.xlabel("log10(live bacteria/wet g)")
 plt.ylabel("Treatment")
 plt.legend(handles=legend_element, loc='lower right')
 
-####### Pour ILEAL sample
+#######  ILEAL samples
 
 figure, axis = plt.subplots()
   
@@ -159,11 +154,11 @@ line = fd.readline()
 # retrieve 1st data line (2nd line)
 line = fd.readline()
 while line != '':
-    # remove endof line character
+    # remove end-of-line character
     line = line.replace("\n", "")
     data = line.split(";")
     
-    # process only for ILEAL samples    
+    # process only ileal samples    
     if data[2] == 'ileal':
         value = math.log10(float(data[8]))
         if data[5] == 'ABX':
@@ -175,27 +170,27 @@ while line != '':
 fd.close()
 
 
-# draw violon
+# draw violin plots
 
 violins = axis.violinplot([ileal_abx, ileal_plb], showmedians=False, showmeans =False)
 
-# appliquer les couleurs
+# apply volors to violins
 for violin, color in zip(violins['bodies'], ["red", "blue"]):
     violin.set_facecolor(color)
     violin.set_alpha(0.1)
 
    
 
-# affichage titre et label 
-
-
+# Title, labels and legend 
 legend_element =[
     Patch(facecolor='red',label="ABX", alpha=0.1),
     Patch(facecolor='blue',alpha=0.1, label="Placebo")]    
+
 plt.title("Ileal live bacteria")
 plt.xlabel("log10(live bacteria/wet g)")
 plt.ylabel("Treatment")
 
 plt.legend(handles=legend_element, loc='lower right')
+
 
 
