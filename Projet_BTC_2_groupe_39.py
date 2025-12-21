@@ -79,7 +79,7 @@ for mouse_id in mouse_list :
     # draw curve    
     axes.plot(x,y,label = mouse_id,color = clr,alpha=0.5)
 #Graph formatting 
-axes.set_xlabel("Experimental day"
+axes.set_xlabel("Experimental day")
 axes.set_ysetlabel("Log10 live bacteria")
 axes.set_title("Fecal bacteria evolution per mouse")
                 
@@ -90,5 +90,6 @@ figure.show()
 print("Graph saved as out.png")
       
     
+
 
 
