@@ -100,7 +100,7 @@ figure, axis = plt.subplots()
 cecal_abx = []
 cecal_plb = []
 
-fd = open("data_small.csv", "r")
+fd = open(filepath, "r")
 # skip 1st line
 line = fd.readline()
 # retrieve 1st data line (2nd line)
@@ -148,7 +148,7 @@ figure, axis = plt.subplots()
 ileal_abx = []
 ileal_plb = []
 
-fd = open("data_small.csv", "r")
+fd = open(filepath, "r")
 # skip 1st line
 line = fd.readline()
 # retrieve 1st data line (2nd line)
@@ -191,6 +191,7 @@ plt.xlabel("log10(live bacteria/wet g)")
 plt.ylabel("Treatment")
 
 plt.legend(handles=legend_element, loc='lower right')
+
 
 
 
