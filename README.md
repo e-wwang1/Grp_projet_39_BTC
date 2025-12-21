@@ -14,9 +14,9 @@ Ensuite, le programme permet de lire un fichier CSV, d'extraire les informations
    
 Le dépôt contient deux dossiers:
 
-main.py : script principal python permettant de lire le fichier CSV ainsi que générer les graphiques. 
+• main.py : script principal python permettant de lire le fichier CSV ainsi que générer les graphiques. 
 
-README.md : fichier contenenant les instructions d'utilisations et les limitations du projet. 
+• README.md : fichier contenenant les instructions d'utilisations et les limitations du projet. 
 
 Lors de l’exécution du script, trois dossiers supplémentaires sont automatiquement créés afin d’organiser les données :
 un dossier input, contenant le fichier CSV utilisé pour l’analyse, un dossier images, contenant les graphiques générés par le programme et enfin un dossier output, regroupant les fichiers CSV des résultats extraits à partir des données initiales.
