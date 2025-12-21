@@ -7,14 +7,37 @@ Created on Sun Nov 30 14:28:40 2025
 
 """
 
+import os
+import math
+import csv
+import shutil
 from matplotlib import pyplot as plt
 from matplotlib.patches import Patch
-import math 
+
+
+
+
+# -----------------------------
+# Créer les dossiers nécessaires
+# -----------------------------
+os.makedirs("input", exist_ok=True)
+os.makedirs("output", exist_ok=True)
+os.makedirs("images", exist_ok=True)
+
 
 #Read input file name and build CSV path
 filepath = input("Enter the CSV name file (without extention) :")
 filepath = [filepath,'csv']
 filepath = '.'.join(filepath)
+
+# Copy CSV in the folder input
+csv_name = os.path.basename(filepath)
+dest_csv = os.path.join("input", csv_name)
+shutil.copy(filepath, dest_csv)
+
+# Utiliser le CSV copié pour la suite du script
+filepath = dest_csv
+
 
 ##Create a list of unique mouse IDs
    
@@ -44,6 +67,7 @@ fd.close()
 
 figure, axis = plt.subplots()
 
+fecal_rows = []  # for 'output' folder
 for mouse_id in mouse_list : 
 
     x=[]
@@ -68,7 +92,8 @@ for mouse_id in mouse_list :
                 y.append(y_value)
                 ## Retrieve treatment type
                 treatment= data[5]
-
+                fecal_rows.append([mouse_id, x_value, y_value, treatment])
+                
         line = fd.readline()
     
     fd.close()
@@ -79,7 +104,7 @@ for mouse_id in mouse_list :
 
 # Plot curve    
     axis.plot(x,y,color = clr)
-figure.savefig("out.png", dpi=200)
+figure.savefig("images/cecal_plot.png", dpi=200)
       
  #Figure title, labels, and legend
 legend_element =[
@@ -87,9 +112,16 @@ legend_element =[
     Patch(facecolor='blue',alpha=0.7, label="Placebo")]  
    
 axis.set_title("Fecal live bacteria")
-axis.set_xlabel("log10(live bacteria/wet g)")
-axis.set_ylabel("Whashout day") 
+axis.set_xlabel("Whashout day")
+axis.set_ylabel("log10(live bacteria/wet g") 
 plt.legend(handles=legend_element, loc='lower left')
+
+# safeguard CSV FECAL
+with open("output/fecal_data.csv", "w", newline="") as f:
+    writer = csv.writer(f, delimiter=";")
+    writer.writerow(["mouse_id","experimental_day","counts_live_bacteria_per_wet_g", "treatment"])
+    writer.writerows(fecal_rows)
+
 
 
 
@@ -137,10 +169,22 @@ legend_element =[
 
 
 plt.title("Cecal live bacteria")
-plt.xlabel("log10(live bacteria/wet g)")
-plt.ylabel("Treatment")
+plt.xlabel("Treatment")
+plt.ylabel("log10(live bacteria/wet g)")
 plt.legend(handles=legend_element, loc='lower right')
 
+figure.savefig("images/cecal_plot.png", dpi=200)
+
+# safeguard CSV
+with open("output/cecal_data.csv", "w", newline="") as f:
+    writer = csv.writer(f, delimiter=";")
+    writer.writerow(["sample_type", "treatment", "counts_live_bacteria_per_wet_g"])
+    for v in cecal_abx:
+        writer.writerow(["cecal", "ABX", v])
+    for v in cecal_plb:
+        writer.writerow(["cecal", "Placebo", v])
+        
+        
 #######  ILEAL samples
 
 figure, axis = plt.subplots()
@@ -187,11 +231,20 @@ legend_element =[
     Patch(facecolor='blue',alpha=0.1, label="Placebo")]    
 
 plt.title("Ileal live bacteria")
-plt.xlabel("log10(live bacteria/wet g)")
-plt.ylabel("Treatment")
+plt.xlabel("Treatment")
+plt.ylabel("log10(live bacteria/wet g)")
 
 plt.legend(handles=legend_element, loc='lower right')
 
+figure.savefig("images/ileal_plot.png", dpi=200) 
 
+# Safeguard CSV
+with open("output/ileal_data.csv", "w", newline="") as f:
+    writer = csv.writer(f, delimiter=";")
+    writer.writerow(["sample_type", "treatment", "counts_live_bacteria_per_wet_g"])
+    for v in ileal_abx:
+        writer.writerow(["ileal", "ABX", v])
+    for v in ileal_plb:
+        writer.writerow(["ileal", "Placebo", v])
 
 
