@@ -71,7 +71,8 @@ fd.close()
 
 figure, axis = plt.subplots()
 
-fecal_rows = []  # for 'output' folder
+# for 'output' folder
+fecal_rows = []  
 for mouse_id in mouse_list : 
 
     x=[]
@@ -253,5 +254,6 @@ with open("output/ileal_data.csv", "w", newline="") as f:
         writer.writerow(["ileal", "ABX", v])
     for v in ileal_plb:
         writer.writerow(["ileal", "Placebo", v])
+
 
 
