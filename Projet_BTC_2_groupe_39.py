@@ -8,13 +8,14 @@ Created on Sun Nov 30 14:28:40 2025
 """
 
 from matplotlib import pyplot as plt
+from matplotlib.patches import Patch
 import math 
 
 filepath = input("Enter the CSV name file (without extention) :")
 filepath = [filepath,'csv']
 filepath = '.'.join(filepath)
 
-
+##### creer mouse_list 
    
 mouse_list = []
 
@@ -38,7 +39,7 @@ while line != "":
 
 fd.close()
 
-
+##### 
 
 figure, axis = plt.subplots()
 
@@ -78,18 +79,22 @@ for mouse_id in mouse_list :
 
 
 # draw curve    
-    axis.plot(x,y,color = clr, label = treatment)
+    axis.plot(x,y,color = clr)
 figure.savefig("out.png", dpi=200)
-figure.legend(loc='right')   
-axis.text(0.78, 0.95, "Red : Antibiotic (ABX)", color="red", transform=axis.transAxes)
-axis.text(0.78, 0.90, "Blue : Placebo", color="blue", transform=axis.transAxes)
-
-    
+      
+ #titre et label 
+legend_element =[
+    Patch(facecolor='red',label="ABX", alpha=0.7),
+    Patch(facecolor='blue',alpha=0.7, label="Placebo")]  
+   
 axis.set_title("Fecal live bacteria")
 axis.set_xlabel("log10(live bacteria/wet g)")
-axis.set_ylabel("Whashout day")
+axis.set_ylabel("Whashout day") 
+plt.legend(handles=legend_element, loc='lower left')
 
 
+
+####### Pour CECAL sample
 
 
 figure, axis = plt.subplots()
@@ -119,26 +124,29 @@ while line != '':
     
     line = fd.readline()
 fd.close()
-# récupérer les violons
-violins = axis.violinplot([cecal_abx, cecal_plb], positions = [ 1,2 ], showmedians=False)
+#draw violons 
+violins = axis.violinplot([cecal_abx, cecal_plb], positions = [ 1,2 ], showmedians=False, showmeans =False)
 
 #  appliquer les couleurs
 for violin, color in zip(violins['bodies'], ["red", "blue"]):
     violin.set_facecolor(color)
 
     violin.set_alpha(0.1)
-    
-# draw curve    
-axis.violinplot([cecal_abx, cecal_plb])
-figure.savefig("out.png", dpi=200)
-    
+
+# affichage titre et label 
+
+
+legend_element =[
+    Patch(facecolor='red',label="ABX", alpha=0.1),
+    Patch(facecolor='blue',alpha=0.1, label="Placebo")]    
+
+
 plt.title("Cecal live bacteria")
 plt.xlabel("log10(live bacteria/wet g)")
 plt.ylabel("Treatment")
-plt.xticks([1, 2],["ABX", "Placebo"])
-#legend on top and right
-axis.text(0.65, 0.95, "Red : Antibiotic (ABX)", color="red", transform=axis.transAxes)
-axis.text(0.65, 0.90, "Blue : Placebo", color="blue", transform=axis.transAxes)
+plt.legend(handles=legend_element, loc='lower right')
+
+####### Pour ILEAL sample
 
 figure, axis = plt.subplots()
   
@@ -167,23 +175,27 @@ while line != '':
 fd.close()
 
 
-# récupérer les violons
+# draw violon
 
-violins = axis.violinplot([ileal_abx, ileal_plb],positions =[1,2], showmedians=False)
+violins = axis.violinplot([ileal_abx, ileal_plb], showmedians=False, showmeans =False)
 
 # appliquer les couleurs
 for violin, color in zip(violins['bodies'], ["red", "blue"]):
     violin.set_facecolor(color)
     violin.set_alpha(0.1)
 
-# draw curve    
+   
+
+# affichage titre et label 
+
+
+legend_element =[
+    Patch(facecolor='red',label="ABX", alpha=0.1),
+    Patch(facecolor='blue',alpha=0.1, label="Placebo")]    
 plt.title("Ileal live bacteria")
 plt.xlabel("log10(live bacteria/wet g)")
 plt.ylabel("Treatment")
-plt.xticks([1, 2],["ABX", "Placebo"])
-#legend on top and right
-axis.text(0.65, 0.95, "Red : Antibiotic (ABX)", color="red", transform=axis.transAxes)
-axis.text(0.65, 0.90, "Blue : Placebo", color="blue", transform=axis.transAxes)
 
+plt.legend(handles=legend_element, loc='lower right')
 
 
