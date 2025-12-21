@@ -34,8 +34,6 @@ filepath = '.'.join(filepath)
 csv_name = os.path.basename(filepath)
 dest_csv = os.path.join("input", csv_name)
 shutil.copy(filepath, dest_csv)
-
-# Utiliser le CSV copié pour la suite du script
 filepath = dest_csv
 
 # -----------------------------
@@ -255,6 +253,7 @@ with open("output/ileal_data.csv", "w", newline="") as f:
         writer.writerow(["ileal", "ABX", v])
     for v in ileal_plb:
         writer.writerow(["ileal", "Placebo", v])
+
 
 
 
