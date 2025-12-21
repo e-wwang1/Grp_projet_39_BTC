@@ -1,5 +1,7 @@
 
+
 1. Descripion générale du projet
+
 
 
 Tout d'abord, ce projet a pour objectif de traiter des données expérimentales issues d'une étude sur des souris traitées ou non par un cocktail d'antibiotiques. 
@@ -7,6 +9,7 @@ Ensuite, le programme permet de lire un fichier CSV, d'extraire les informations
 
 
 2. Contenu du dépôt
+
 
    
 Le dépôt contient deux dossiers:
@@ -19,6 +22,7 @@ un dossier input, contenant le fichier CSV utilisé pour l’analyse, un dossier
 
 3. Instructions pour lancer le programme
 
+
    
 Pour exécuter le programme suivre les instructions suivantes :
 •  Placer le fichier CSV contenant les données expérimentales dans le même dossier que le fichier main.py.
@@ -29,9 +33,11 @@ Pour exécuter le programme suivre les instructions suivantes :
 
 •  Lors de l’exécution, entrer le nom du fichier CSV sans l’extension .csv lorsque le programme le demande
 
-Le programme copie alors automatiquement ce fichier dans le dossier input, traite les données qu’il contient et génère les résultats sous forme de graphiques et de fichiers CSV
+Le programme copie alors automatiquement ce fichier dans le dossier input, traite les données qu’il contient et génère les résultats sous forme de graphiques et de fichiers CSV.
+
 
 4. Fonctionnalitées implémentées
+
 
 
 Tout d'abord,le programme implémente plusieurs fonctionnalités permettant l’analyse des données expérimentales. Il est capable de lire un fichier CSV contenant les résultats bruts de l’étude et de détecter automatiquement l’ensemble des souris, sans intervention manuelle de l’utilisateur.
@@ -39,8 +45,8 @@ Ensuite, les données sont filtrées en fonction du type d’échantillon étudi
 De plus, le programme distingue également les groupes expérimentaux traités par antibiotiques et les groupes placebo grâce à un code couleur, ainsi la comparaison visuelle est facilitée entre les conditions expérimentales. En plus des graphiques, les données traitées sont sauvegardées dans des fichiers CSV différents afin de permettre une analyse plus détaillée.
 
 
-
 5. Résultats générés par le programme
+
 
 
 En effet, on obtient 3 fichiers dans l'explorateur de fichiers. 
@@ -49,11 +55,13 @@ Tout d'abord, un fichier CSV qu'on va analyser: input avec data_small et data_re
 
 6. Limitations fonctionnelles
 
+
    
 Ce programme, malgré son bon fonctionnement présente plusieurs limatations: des fonctionnalités implémententées son partiellement fonctionnelles et il y a également des fonctionnalitées non implémentées.
 
 
 a) Fonctionnalités implémentées mais partiellement ou imparfaitement fonctionnelles
+
 
 
 • le programme n'inclut pas encore de gestion avancée des erreurs (par exemple pour les valeurs incorrectes), ainsi que les valeurs aberrantes et manquantes ne sont pas prises en compte.
@@ -72,12 +80,14 @@ a) Fonctionnalités implémentées mais partiellement ou imparfaitement fonction
 b) Fonctionnalitées non implentées
 
 
+
 • Le programme ne permet pas de sélectionner un sous-groupe de souris (par exemple le sexe).
 
 • Le programme ne propose pas d'analyses statistiques complémentaires( par exemple des comparaisons entre groupes, moyennes, tests statistiques, écart-type etc.).
 
 
-6.Conclusion : 
+6. Conclusion  
+
 
 
 Pour conclure, ce projet permet de manipuler des données expérimentales et de mieux comprendre leur évolution grâce à des graphiques. Même si le programme reste basique et présente certaines limites . Il constitue cependant une bonne base pour analyser des données biologiques. En effet, dans cette étude, nous avons pu analyser l'impact d'un traitement antibiotique sur le microbiote intestinal chez la souris. 
