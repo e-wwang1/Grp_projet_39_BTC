@@ -27,6 +27,7 @@ un dossier input, contenant le fichier CSV utilisé pour l’analyse, un dossier
 
    
 Pour exécuter le programme suivre les instructions suivantes :
+
 •  Placer le fichier CSV contenant les données expérimentales dans le même dossier que le fichier main.py.
 
 •  Ouvrir le fichier main.py avec, par exemple Spyder
