@@ -80,7 +80,10 @@ for mouse_id in mouse_list :
 # draw curve    
     axis.plot(x,y,color = clr, label = treatment)
 figure.savefig("out.png", dpi=200)
-figure.legend(loc='right')        
+figure.legend(loc='right')   
+axis.text(0.78, 0.95, "Red : Antibiotic (ABX)", color="red", transform=axis.transAxes)
+axis.text(0.78, 0.90, "Blue : Placebo", color="blue", transform=axis.transAxes)
+
     
 axis.set_title("Fecal live bacteria")
 axis.set_xlabel("log10(live bacteria/wet g)")
@@ -133,6 +136,9 @@ plt.title("Cecal live bacteria")
 plt.xlabel("log10(live bacteria/wet g)")
 plt.ylabel("Treatment")
 plt.xticks([1, 2],["ABX", "Placebo"])
+#legend on top and right
+axis.text(0.65, 0.95, "Red : Antibiotic (ABX)", color="red", transform=axis.transAxes)
+axis.text(0.65, 0.90, "Blue : Placebo", color="blue", transform=axis.transAxes)
 
 figure, axis = plt.subplots()
   
@@ -175,5 +181,9 @@ plt.title("Ileal live bacteria")
 plt.xlabel("log10(live bacteria/wet g)")
 plt.ylabel("Treatment")
 plt.xticks([1, 2],["ABX", "Placebo"])
+#legend on top and right
+axis.text(0.65, 0.95, "Red : Antibiotic (ABX)", color="red", transform=axis.transAxes)
+axis.text(0.65, 0.90, "Blue : Placebo", color="blue", transform=axis.transAxes)
+
 
 
