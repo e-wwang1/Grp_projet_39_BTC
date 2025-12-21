@@ -13,7 +13,9 @@ Ensuite, le programme permet de lire un fichier CSV, d'extraire les informations
 
    
 Le dépôt contient deux dossiers:
+
 main.py : script principal python permettant de lire le fichier CSV ainsi que générer les graphiques. 
+
 README.md : fichier contenenant les instructions d'utilisations et les limitations du projet. 
 
 Lors de l’exécution du script, trois dossiers supplémentaires sont automatiquement créés afin d’organiser les données :
